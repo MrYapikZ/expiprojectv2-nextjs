@@ -2,6 +2,7 @@ import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import React from "react";
+import '@/app/styles/globals.css';
 
 type Props = {
     children: React.ReactNode;
