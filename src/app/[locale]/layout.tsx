@@ -4,11 +4,26 @@ import {routing} from '@/i18n/routing';
 import React from "react";
 import '@/styles/globals.css';
 import AppHeader from "@/components/AppHeader";
+import {Roboto_Condensed, Bebas_Neue} from "next/font/google"
 
 type Props = {
     children: React.ReactNode;
     params: Promise<{ locale: string }>;
 };
+
+const robotoCondensed = Roboto_Condensed({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-roboto-condensed',
+    weight: ['400', '700']
+});
+
+const bebasNeue = Bebas_Neue({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: '--font-bebas-neue',
+    weight: ['400']
+});
 
 export default async function LocaleLayout({children, params}: Props) {
     // Ensure that the incoming `locale` is valid
@@ -18,9 +33,9 @@ export default async function LocaleLayout({children, params}: Props) {
     }
 
     return (
-        <html lang={locale} suppressHydrationWarning>
+        <html lang={locale} className={`${bebasNeue.variable} ${robotoCondensed.variable}`} suppressHydrationWarning>
         <body
-            className={`antialiased`}
+            className={`${robotoCondensed.className} antialiased`}
         >
         <NextIntlClientProvider>
             <AppHeader/>

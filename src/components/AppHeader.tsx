@@ -12,7 +12,7 @@ function AppHeader() {
     return (
         <div className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-between">
             {/* Left Placeholder */}
-            <div/>
+            <div className="hidden md:block w-24"/>
 
             {/* Center Menubar */}
             <Menubar>
