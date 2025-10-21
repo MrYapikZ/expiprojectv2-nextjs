@@ -2,7 +2,8 @@ import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import React from "react";
-import '@/app/styles/globals.css';
+import '@/styles/globals.css';
+import AppHeader from "@/components/AppHeader";
 
 type Props = {
     children: React.ReactNode;
@@ -22,6 +23,7 @@ export default async function LocaleLayout({children, params}: Props) {
             className={`antialiased`}
         >
         <NextIntlClientProvider>
+            <AppHeader/>
             {children}
         </NextIntlClientProvider>
         </body>
