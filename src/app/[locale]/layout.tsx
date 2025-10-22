@@ -5,6 +5,7 @@ import React from "react";
 import '@/styles/globals.css';
 import AppHeader from "@/components/AppHeader";
 import {Roboto_Condensed, Bebas_Neue} from "next/font/google"
+import CursorEffect from "@/components/CursorEffect";
 
 type Props = {
     children: React.ReactNode;
@@ -38,8 +39,11 @@ export default async function LocaleLayout({children, params}: Props) {
             className={`${robotoCondensed.className} antialiased`}
         >
         <NextIntlClientProvider>
-            <AppHeader/>
-            {children}
+            <div className="cursor-none">
+                <AppHeader/>
+                {children}
+                <CursorEffect/>
+            </div>
         </NextIntlClientProvider>
         </body>
         </html>

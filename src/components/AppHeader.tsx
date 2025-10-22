@@ -21,21 +21,21 @@ function AppHeader() {
             <Menubar>
                 {/*<MenubarLabel>{t('App.firstName')}</MenubarLabel>*/}
                 <MenubarMenu>
-                    <MenubarTrigger>{t('Navigation.about')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">{t('Navigation.about')}</MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger>{t('Navigation.contact')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">{t('Navigation.contact')}</MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger>{t('Navigation.projects')}</MenubarTrigger>
-                    <MenubarContent>
-                        <MenubarItem asChild>
-                            <Link href="https://library.expiproject.com">
+                    <MenubarTrigger className="cursor-none">{t('Navigation.projects')}</MenubarTrigger>
+                    <MenubarContent className="cursor-none">
+                        <MenubarItem asChild >
+                            <Link href="https://library.expiproject.com" className="cursor-none">
                                 {t('Projects.library.title')}
                             </Link>
                         </MenubarItem>
-                        <MenubarItem>
-                            <Link href="https://miyuki.expiproject.com">
+                        <MenubarItem asChild >
+                            <Link href="https://miyuki.expiproject.com" className="cursor-none">
                                 {t('Projects.miyuki.title')}
                             </Link>
                         </MenubarItem>
@@ -46,10 +46,10 @@ function AppHeader() {
             {/* Right Menubar */}
             <Menubar>
                 <MenubarMenu>
-                    <MenubarTrigger>{t('Navigation.signIn')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">{t('Navigation.signIn')}</MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger>{t('Navigation.signUp')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">{t('Navigation.signUp')}</MenubarTrigger>
                 </MenubarMenu>
             </Menubar>
         </div>

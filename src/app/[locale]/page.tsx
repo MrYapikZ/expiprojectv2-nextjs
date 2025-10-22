@@ -1,5 +1,6 @@
 import {useTranslations} from 'next-intl';
 import HeroBackground from "@/components/home/HeroBackground";
+import CursorEffect from "@/components/CursorEffect";
 
 export default function HomePage() {
     const t = useTranslations('HomePage');
