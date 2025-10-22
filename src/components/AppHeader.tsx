@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import {
     Menubar,
@@ -7,8 +8,10 @@ import {
     MenubarTrigger
 } from "@/components/ui/menubar";
 import Link from "next/link";
+import {useTranslations} from "use-intl";
 
 function AppHeader() {
+    const t =  useTranslations()
     return (
         <div className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-between">
             {/* Left Placeholder */}
@@ -16,21 +19,24 @@ function AppHeader() {
 
             {/* Center Menubar */}
             <Menubar>
-                <MenubarLabel>Expi</MenubarLabel>
+                {/*<MenubarLabel>{t('App.firstName')}</MenubarLabel>*/}
                 <MenubarMenu>
-                    <MenubarTrigger>About</MenubarTrigger>
+                    <MenubarTrigger>{t('Navigation.about')}</MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger>Project</MenubarTrigger>
+                    <MenubarTrigger>{t('Navigation.contact')}</MenubarTrigger>
+                </MenubarMenu>
+                <MenubarMenu>
+                    <MenubarTrigger>{t('Navigation.projects')}</MenubarTrigger>
                     <MenubarContent>
                         <MenubarItem asChild>
                             <Link href="https://library.expiproject.com">
-                                ExpiLibrary
+                                {t('Projects.library.title')}
                             </Link>
                         </MenubarItem>
                         <MenubarItem>
                             <Link href="https://miyuki.expiproject.com">
-                                Miyuki
+                                {t('Projects.miyuki.title')}
                             </Link>
                         </MenubarItem>
                     </MenubarContent>
@@ -40,10 +46,10 @@ function AppHeader() {
             {/* Right Menubar */}
             <Menubar>
                 <MenubarMenu>
-                    <MenubarTrigger>Sign In</MenubarTrigger>
+                    <MenubarTrigger>{t('Navigation.signIn')}</MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger>Sign Up</MenubarTrigger>
+                    <MenubarTrigger>{t('Navigation.signUp')}</MenubarTrigger>
                 </MenubarMenu>
             </Menubar>
         </div>
