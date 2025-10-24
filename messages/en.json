@@ -1,0 +1,31 @@
+{
+  "App": {
+    "name": "Expi Project",
+    "firstName": "Expi",
+    "lastName": "Project",
+    "shortVersion": "2",
+    "version": "0.2.0"
+  },
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "contact": "Contact",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out"
+  },
+  "Projects": {
+    "library": {
+      "title": "ExpiLibrary",
+      "description": "A modern, open-source digital library management system designed to streamline the organization, cataloging, and accessibility of books and resources for libraries of all sizes."
+    },
+    "miyuki": {
+      "title": "Miyuki",
+      "description": "Miyuki is an all-in-one Discord bot built for smarter, smoother, and more engaging servers. It combines moderation, automation, music, utilities, and entertainment in one sleek, customizable package — adapting effortlessly to any community size or style."
+    }
+  }
+}
