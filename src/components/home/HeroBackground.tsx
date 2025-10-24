@@ -35,7 +35,7 @@ function HeroBackground() {
                 each: 0.06,
                 from: 'end'
             }
-        }, 0.5)
+        }, 3.5)
             .to(lNameSplit.chars, {
                 opacity: 1,
                 y: 0,
@@ -46,8 +46,8 @@ function HeroBackground() {
                     each: 0.06,
                     from: 'start'
                 }
-            }, 0.5)
-            .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 1);
+            }, 3.5)
+            .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4);
     }, []);
 
     return (

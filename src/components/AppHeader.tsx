@@ -27,9 +27,9 @@ function AppHeader() {
 
         const tl = gsap.timeline();
         gsap.set([leftNav, centerNav, rightNav], {opacity: 0, y: -50});
-        tl.to(leftNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 1)
-            .to(centerNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 1.2)
-            .to(rightNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 1.4);
+        tl.to(leftNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4)
+            .to(centerNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4.2)
+            .to(rightNav, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4.4);
 
     }, []);
 

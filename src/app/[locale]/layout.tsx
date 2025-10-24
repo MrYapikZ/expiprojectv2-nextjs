@@ -6,6 +6,7 @@ import '@/styles/globals.css';
 import AppHeader from "@/components/AppHeader";
 import {Roboto_Condensed, Bebas_Neue} from "next/font/google"
 import CursorEffect from "@/components/CursorEffect";
+import AppSplash from "@/components/AppSplash";
 
 type Props = {
     children: React.ReactNode;
@@ -40,6 +41,7 @@ export default async function LocaleLayout({children, params}: Props) {
         >
         <NextIntlClientProvider>
             <div className="cursor-none">
+                <AppSplash/>
                 <AppHeader/>
                 {children}
                 <CursorEffect/>
