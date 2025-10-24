@@ -30,7 +30,7 @@ const bebasNeue = Bebas_Neue({
     weight: ['400']
 });
 
-export const metadata : Metadata = {
+export const metadata: Metadata = {
     title: "ExpiProject",
     description:
         "ExpiProject is a collaborative platform where our team showcases creative projects, experiments, and innovations — built for fun and growth.",
@@ -43,7 +43,7 @@ export const metadata : Metadata = {
         "programming",
         "innovation",
     ],
-    authors: [{ name: "ExpiProject Team" }],
+    authors: [{name: "ExpiProject Team"}],
     openGraph: {
         type: "website",
         url: "https://expiproject.com/",
@@ -92,10 +92,10 @@ export default async function LocaleLayout({children, params}: Props) {
                 <AppHeader/>
                 {children}
                 <CursorEffect/>
-                <Analytics/>
-                <SpeedInsights/>
             </div>
         </NextIntlClientProvider>
+        <Analytics/>
+        <SpeedInsights/>
         </body>
         </html>
     );
