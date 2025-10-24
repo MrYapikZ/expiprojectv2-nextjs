@@ -52,7 +52,7 @@ function HeroBackground() {
 
     return (
         <>
-            <div className="h-screen w-full absolute top-0 left-0 -z-10 overflow-hidden">
+            <div className="h-full w-full absolute top-0 left-0 -z-10 overflow-hidden">
                 {/* Copyright */}
                 <h2 ref={copyrightRef}
                     className="hidden md:block absolute top-5 left-12 text-xl font-roboto-condensed font-semibold">
