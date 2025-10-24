@@ -38,11 +38,11 @@ export default function CursorEffect() {
 
         const onOver = (e: Event) => {
             const target = e.target as HTMLElement;
-            if (target.closest('button, a, .cursor-hover')) onEnter();
+            if (target.closest('button, a, link, .cursor-hover')) onEnter();
         };
         const onOut = (e: Event) => {
             const target = e.target as HTMLElement;
-            if (target.closest('button, a, .cursor-hover')) onLeave();
+            if (target.closest('button, a, link, .cursor-hover')) onLeave();
         };
 
         document.addEventListener('mouseover', onOver);

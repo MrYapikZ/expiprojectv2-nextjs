@@ -20,7 +20,7 @@ function AppSplash() {
         tl.to(circle, {opacity: 1, scale: 1, duration: 1.6, rotate: 180, ease: 'power3.out'}, 0)
             .to(loadingTitle, {opacity: 1, y: 0, duration: 1.2, ease: 'back.out'}, 0.6)
             .to(loadingTitle, {opacity: 0, y: -50, duration: 1.2, ease: 'power3.in'}, 1.8)
-            .to(circle, {scale: 100, border: 2000, rotate: 25000, duration: 1, ease: 'power3.in'}, 3)
+            .to(circle, {scale: 100, rotate: 360, opacity: 0, duration: 1, ease: 'power3.in'}, 3)
             .to(background, {opacity: 0, duration: 0.5, ease: 'power3.in'}, 3);
 
         const counterObj = {value: 0};
