@@ -36,10 +36,10 @@ function AppHeader() {
     return (
         <div className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-between">
             {/* Left Placeholder */}
-            <div ref={leftNavRef} className="hidden md:block w-24"/>
+            <div ref={leftNavRef} className="hidden md:block w-24 opacity-0"/>
 
             {/* Center Menubar */}
-            <Menubar ref={centerNavRef}>
+            <Menubar ref={centerNavRef} className="opacity-0">
                 {/*<MenubarLabel>{t('App.firstName')}</MenubarLabel>*/}
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-none">{t('Navigation.about')}</MenubarTrigger>
@@ -65,7 +65,7 @@ function AppHeader() {
             </Menubar>
 
             {/* Right Menubar */}
-            <Menubar ref={rightNavRef}>
+            <Menubar ref={rightNavRef} className="opacity-0">
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-none">{t('Navigation.signIn')}</MenubarTrigger>
                 </MenubarMenu>
