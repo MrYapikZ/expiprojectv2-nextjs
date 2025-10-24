@@ -9,6 +9,7 @@ import CursorEffect from "@/components/CursorEffect";
 import AppSplash from "@/components/AppSplash";
 import {Analytics} from "@vercel/analytics/next";
 import {SpeedInsights} from "@vercel/speed-insights/next";
+import {Metadata} from "next";
 
 type Props = {
     children: React.ReactNode;
@@ -28,6 +29,50 @@ const bebasNeue = Bebas_Neue({
     variable: '--font-bebas-neue',
     weight: ['400']
 });
+
+export const metadata : Metadata = {
+    title: "ExpiProject",
+    description:
+        "ExpiProject is a collaborative platform where our team showcases creative projects, experiments, and innovations — built for fun and growth.",
+    keywords: [
+        "ExpiProject",
+        "team portfolio",
+        "web development",
+        "creative projects",
+        "collaboration",
+        "programming",
+        "innovation",
+    ],
+    authors: [{ name: "ExpiProject Team" }],
+    openGraph: {
+        type: "website",
+        url: "https://expiproject.com/",
+        title: "ExpiProject",
+        description:
+            "Explore our creative works, experiments, and digital builds. ExpiProject is where ideas meet execution.",
+        images: [
+            {
+                url: "https://expiproject.com/preview.jpg",
+                width: 1200,
+                height: 630,
+                alt: "ExpiProject Team Portfolio Preview",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "ExpiProject",
+        description:
+            "Collaborative projects, experiments, and portfolio builds from the ExpiProject team.",
+        images: ["https://expiproject.com/preview.jpg"],
+    },
+    icons: {
+        icon: "/favicon.png",
+    },
+    themeColor: "#101010",
+    metadataBase: new URL("https://expiproject.com"),
+};
+
 
 export default async function LocaleLayout({children, params}: Props) {
     // Ensure that the incoming `locale` is valid
