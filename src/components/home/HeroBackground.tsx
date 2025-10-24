@@ -1,58 +1,73 @@
 'use client';
-import React, {useEffect, useRef} from 'react';
+import React, {useLayoutEffect, useRef} from 'react';
 import {useTranslations} from 'use-intl'
 import {gsap} from 'gsap';
 import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
+let hasAnimated = false;
+
 function HeroBackground() {
     const t = useTranslations();
 
+    const rootRef = useRef<HTMLDivElement | null>(null);
     const copyrightRef = useRef<HTMLHeadingElement | null>(null);
     const fNameRef = useRef<HTMLHeadingElement | null>(null);
     const lNameRef = useRef<HTMLHeadingElement | null>(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const copyright = copyrightRef.current;
         const fName = fNameRef.current;
         const lName = lNameRef.current;
         if (!copyright || !fName || !lName) return;
 
-        const tl = gsap.timeline();
-        const fNameSplit = new SplitText(fName, {type: 'chars'});
-        const lNameSplit = new SplitText(lName, {type: 'chars'});
-        gsap.set(copyright, {opacity: 0, y: -50});
-        gsap.set([...fNameSplit.chars], {opacity: 0, y: 50, x: -250});
-        gsap.set([...lNameSplit.chars], {opacity: 0, y: -50, x: 250});
-        tl.to(fNameSplit.chars, {
-            opacity: 1,
-            y: 0,
-            x: 0,
-            duration: 1.4,
-            ease: 'back.out',
-            stagger: {
-                each: 0.06,
-                from: 'end'
-            }
-        }, 3.5)
-            .to(lNameSplit.chars, {
+        if (hasAnimated) {
+            gsap.set(copyright, {opacity: 1, y: 0});
+            gsap.set([fName, lName], {clearProps: 'all'});
+            return;
+        }
+
+        hasAnimated = true;
+
+        const ctx = gsap.context(() => {
+            const tl = gsap.timeline();
+            const fNameSplit = new SplitText(fName, {type: 'chars'});
+            const lNameSplit = new SplitText(lName, {type: 'chars'});
+            gsap.set(copyright, {opacity: 0, y: -50});
+            gsap.set([...fNameSplit.chars], {opacity: 0, y: 50, x: -250});
+            gsap.set([...lNameSplit.chars], {opacity: 0, y: -50, x: 250});
+            tl.to(fNameSplit.chars, {
                 opacity: 1,
                 y: 0,
                 x: 0,
-                duration: 1.,
+                duration: 1.4,
                 ease: 'back.out',
                 stagger: {
                     each: 0.06,
-                    from: 'start'
+                    from: 'end'
                 }
             }, 3.5)
-            .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4);
+                .to(lNameSplit.chars, {
+                    opacity: 1,
+                    y: 0,
+                    x: 0,
+                    duration: 1.,
+                    ease: 'back.out',
+                    stagger: {
+                        each: 0.06,
+                        from: 'start'
+                    }
+                }, 3.5)
+                .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4);
+        }, rootRef);
+
+        return () => ctx.revert();
     }, []);
 
     return (
         <>
-            <div className="h-full w-full absolute top-0 left-0 -z-10 overflow-hidden">
+            <div ref={rootRef} className="h-full w-full absolute top-0 left-0 -z-10 overflow-hidden">
                 {/* Copyright */}
                 <h2 ref={copyrightRef}
                     className="hidden md:block absolute top-5 left-12 text-xl font-roboto-condensed font-semibold">

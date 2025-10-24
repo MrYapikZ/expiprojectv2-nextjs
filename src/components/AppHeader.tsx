@@ -42,7 +42,11 @@ function AppHeader() {
             <Menubar ref={centerNavRef} className="opacity-0">
                 {/*<MenubarLabel>{t('App.firstName')}</MenubarLabel>*/}
                 <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">{t('Navigation.about')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">
+                        <Link className="cursor-none" href="/about">
+                            {t('Navigation.about')}
+                        </Link>
+                    </MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-none">{t('Navigation.contact')}</MenubarTrigger>
