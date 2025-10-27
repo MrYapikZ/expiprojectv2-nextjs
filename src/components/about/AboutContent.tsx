@@ -105,8 +105,7 @@ function AboutContent() {
                     scrollTrigger: {
                         trigger: section,
                         start: 'top 85%',
-                        toggleActions: 'play none none reverse',
-                        markers: true,
+                        toggleActions: 'play none none reverse'
                     }
                 });
 
