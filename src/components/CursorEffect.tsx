@@ -41,10 +41,18 @@ export default function CursorEffect() {
 
         window.addEventListener('mousemove', onFirstMove);
 
-        const onEnter = () =>
-            gsap.to(cursor, {scale: 0.4, backgroundColor: 'black', duration: 0.3});
-        const onLeave = () =>
-            gsap.to(cursor, {scale: 1, backgroundColor: 'transparent', duration: 0.3});
+        const onEnter = () => {
+            gsap.to(cursor, {scale: 0.4, backgroundColor: 'black', borderColor: 'black', duration: 0.3});
+            gsap.to(dot, {backgroundColor: 'black', borderColor: 'black', duration: 0.3});
+            cursor.style.mixBlendMode = 'normal';
+            dot.style.mixBlendMode = 'normal';
+        }
+        const onLeave = () => {
+            gsap.to(cursor, {scale: 1, backgroundColor: 'transparent', borderColor: 'white', duration: 0.3});
+            gsap.to(dot, {backgroundColor: 'white', borderColor: 'white', duration: 0.3});
+            cursor.style.mixBlendMode = 'difference';
+            dot.style.mixBlendMode = 'difference';
+        }
 
         const onOver = (e: Event) => {
             const target = e.target as HTMLElement;
@@ -70,11 +78,11 @@ export default function CursorEffect() {
         <>
             <div
                 ref={cursorRef}
-                className="fixed top-0 left-0 z-[9999] border-black rounded-full pointer-events-none"
+                className="fixed top-0 left-0 z-[9999] rounded-full pointer-events-none not-hover:mix-blend-difference border-white will-change-transform"
             />
             <div
                 ref={dotRef}
-                className="fixed top-0 left-0 z-[9999] border-gray-800 bg-gray-800 rounded-full pointer-events-none"
+                className="fixed top-0 left-0 z-[9999] rounded-full pointer-events-none not-hover:mix-blend-difference border-white bg-white will-change-transform"
             />
         </>
     );
