@@ -27,5 +27,44 @@
       "title": "Miyuki",
       "description": "Miyuki is an all-in-one Discord bot built for smarter, smoother, and more engaging servers. It combines moderation, automation, music, utilities, and entertainment in one sleek, customizable package — adapting effortlessly to any community size or style."
     }
+  },
+  "AboutPage": {
+    "title": "HI THERE!",
+    "section1": {
+      "title": "ABOUT",
+      "content": {
+        "paragraph1": "EXPI PROJECT, ",
+        "paragraph2": "a space I built for fun — and to show what I can create when I let ideas run wild. This site is a mix of experimentation, code, and creativity, where I test concepts, build tools, and upload team projects that I’m proud of."
+      }
+    },
+    "section2": {
+      "title": "( What This Is )",
+      "content": {
+        "paragraph1": "ExpiProject started as a personal challenge:",
+        "paragraph2": "“Can I make a clean, working project hub from scratch — just for fun?”",
+        "paragraph3": "Turns out, yes. Now it’s become a personal portfolio and a place where I (and sometimes my team) post projects we’re building, learning from, or just messing around with."
+      }
+    },
+    "section3": {
+      "title": "( The Goal )",
+      "content": {
+        "paragraph1": "Keep it simple, real, and fun.",
+        "paragraph2": "I’m not chasing hype or buzzwords — this site is just a living collection of what I’ve built, what I’m learning, and what I’ll build next."
+      }
+    },
+    "section4": {
+      "title": "( Who’s Behind It )",
+      "content": {
+        "paragraph1": "I’m MrYapikZ, a developer who loves turning ideas into working code.",
+        "paragraph2": "Sometimes I work solo, sometimes I collaborate with friends — but every project here represents a small step forward in my creative journey."
+      }
+    },
+    "section5": {
+      "title": "( What's Next )",
+      "content": {
+        "paragraph1": "Expect more experiments, side projects, and tech demos.",
+        "paragraph2": "ExpiProject will always evolve — because I’m always learning something new."
+      }
+    }
   }
 }

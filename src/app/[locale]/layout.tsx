@@ -69,7 +69,6 @@ export const metadata: Metadata = {
     icons: {
         icon: "/favicon.png",
     },
-    themeColor: "#101010",
     metadataBase: new URL("https://expiproject.com"),
 };
 
