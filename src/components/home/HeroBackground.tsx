@@ -6,8 +6,6 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-let hasAnimated = false;
-
 function HeroBackground() {
     const t = useTranslations();
 
@@ -15,6 +13,7 @@ function HeroBackground() {
     const copyrightRef = useRef<HTMLHeadingElement | null>(null);
     const fNameRef = useRef<HTMLHeadingElement | null>(null);
     const lNameRef = useRef<HTMLHeadingElement | null>(null);
+    const hasAnimatedRef = useRef(false);
 
     useLayoutEffect(() => {
         const copyright = copyrightRef.current;
@@ -22,13 +21,8 @@ function HeroBackground() {
         const lName = lNameRef.current;
         if (!copyright || !fName || !lName) return;
 
-        if (hasAnimated) {
-            gsap.set(copyright, {opacity: 1, y: 0});
-            gsap.set([fName, lName], {clearProps: 'all'});
-            return;
-        }
-
-        hasAnimated = true;
+        const delay = hasAnimatedRef.current ? 0 : 3.5;
+        hasAnimatedRef.current = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
@@ -47,7 +41,7 @@ function HeroBackground() {
                     each: 0.06,
                     from: 'end'
                 }
-            }, 3.5)
+            }, delay)
                 .to(lNameSplit.chars, {
                     opacity: 1,
                     y: 0,
@@ -58,8 +52,8 @@ function HeroBackground() {
                         each: 0.06,
                         from: 'start'
                     }
-                }, 3.5)
-                .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, 4);
+                }, delay)
+                .to(copyright, {opacity: 1, y: 0, duration: 1.6, ease: 'back.out'}, delay + 0.5);
         }, rootRef);
 
         return () => ctx.revert();
