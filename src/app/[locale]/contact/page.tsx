@@ -2,7 +2,7 @@ import React from 'react';
 import {ContactForm} from "@/components/contact/ContactForm";
 import ContactHero from "@/components/contact/ContactHero";
 
-function ContactPage() {
+export default function ContactPage() {
     return (
         <>
             <ContactHero/>
@@ -10,5 +10,3 @@ function ContactPage() {
         </>
     );
 }
-
-export default ContactPage;

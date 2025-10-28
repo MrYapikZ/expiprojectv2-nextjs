@@ -10,6 +10,7 @@ import AppSplash from "@/components/AppSplash";
 import {Analytics} from "@vercel/analytics/next";
 import {SpeedInsights} from "@vercel/speed-insights/next";
 import {Metadata} from "next";
+import SmoothScroll from "@/components/SmoothScroll";
 
 type Props = {
     children: React.ReactNode;
@@ -89,7 +90,9 @@ export default async function LocaleLayout({children, params}: Props) {
             <div className="cursor-none">
                 <AppSplash/>
                 <AppHeader/>
-                {children}
+                <SmoothScroll>
+                    {children}
+                </SmoothScroll>
                 <CursorEffect/>
             </div>
         </NextIntlClientProvider>
