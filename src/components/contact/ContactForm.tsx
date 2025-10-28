@@ -110,7 +110,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                                 autoComplete="name"
                                                 required
                                                 aria-required="true"
-                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
+                                                className="cursor-none uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
                                     </FormItem>
@@ -131,7 +131,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                                 inputMode="tel"
                                                 required
                                                 aria-required="true"
-                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
+                                                className="cursor-none uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
                                     </FormItem>
@@ -151,7 +151,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                                 autoComplete="email"
                                                 required
                                                 aria-required="true"
-                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
+                                                className="cursor-none uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
                                     </FormItem>
@@ -171,7 +171,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                                 maxLength={messageMax}
                                                 required
                                                 aria-required="true"
-                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black max-h-32 !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
+                                                className="cursor-none uppercase border-0 border-b border-b-black aria-invalid:border-b-black max-h-32 !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
                                         <div className="text-xs text-muted-foreground">
@@ -182,7 +182,7 @@ export function ContactForm({action, defaultValues}: Props) {
                             />
 
                             <div className="pt-2">
-                                <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
+                                <Button type="submit" disabled={isSubmitting} className="cursor-none w-full sm:w-auto">
                                     {isSubmitting ? t('ContactPage.Form.submit.loading') : t('ContactPage.Form.submit.label')}
                                 </Button>
                             </div>
