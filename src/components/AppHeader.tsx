@@ -49,7 +49,11 @@ function AppHeader() {
                     </MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">{t('Navigation.contact')}</MenubarTrigger>
+                    <MenubarTrigger className="cursor-none">
+                        <Link href="/contact" className="cursor-none">
+                            {t('Navigation.contact')}
+                        </Link>
+                    </MenubarTrigger>
                 </MenubarMenu>
                 <MenubarMenu>
                     <MenubarTrigger className="cursor-none">{t('Navigation.projects')}</MenubarTrigger>
