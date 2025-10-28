@@ -90,7 +90,7 @@ export function ContactForm({action, defaultValues}: Props) {
 
     return (
         <>
-            <div ref={rootRef} className="absolute w-full h-full flex flex-col justify-center items-center">
+            <div ref={rootRef} className="w-full h-screen flex flex-col justify-center items-center">
                 <div ref={formRef} className="lg:w-2/5 w-5/6 h-auto p-8 border-2 rounded-md shadow-sm">
                     <Form {...form}>
                         <form
