@@ -15,6 +15,7 @@ import {
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {toast} from "sonner";
+import {useTranslations} from "use-intl";
 
 type Props = {
     action?: (data: ContactFormData) => Promise<void> | void;
@@ -22,6 +23,7 @@ type Props = {
 };
 
 export function ContactForm({action, defaultValues}: Props) {
+    const t = useTranslations();
     const form = useForm<ContactFormData>({
         resolver: zodResolver(contactSchema),
         mode: "onTouched",
@@ -77,7 +79,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                         <FormControl>
                                             <Input
                                                 {...field}
-                                                placeholder="your name*"
+                                                placeholder={t('ContactPage.Form.name')}
                                                 autoComplete="name"
                                                 required
                                                 aria-required="true"
@@ -97,7 +99,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                             <Input
                                                 {...field}
                                                 type="tel"
-                                                placeholder="phone*"
+                                                placeholder={t('ContactPage.Form.phone')}
                                                 autoComplete="tel"
                                                 inputMode="tel"
                                                 required
@@ -118,7 +120,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                             <Input
                                                 {...field}
                                                 type="email"
-                                                placeholder="your email*"
+                                                placeholder={t('ContactPage.Form.email')}
                                                 autoComplete="email"
                                                 required
                                                 aria-required="true"
@@ -137,7 +139,7 @@ export function ContactForm({action, defaultValues}: Props) {
                                         <FormControl>
                                             <Textarea
                                                 {...field}
-                                                placeholder="Tell us what you need help with…"
+                                                placeholder={t('ContactPage.Form.message')}
                                                 rows={6}
                                                 maxLength={messageMax}
                                                 required
@@ -154,7 +156,7 @@ export function ContactForm({action, defaultValues}: Props) {
 
                             <div className="pt-2">
                                 <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
-                                    {isSubmitting ? "Sending…" : "Let’s collaborate"}
+                                    {isSubmitting ? t('ContactPage.Form.submit.loading') : t('ContactPage.Form.submit.label')}
                                 </Button>
                             </div>
                         </form>
