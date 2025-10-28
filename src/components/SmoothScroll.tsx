@@ -7,7 +7,17 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+type Props = {
+    children: React.ReactNode;
+    contentClassName?: string;
+    wrapperClassName?: string;
+};
+
+export default function SmoothScroll({
+                                         children,
+                                         contentClassName = 'min-h-full w-full',
+                                         wrapperClassName,
+                                     }: Props) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const smootherRef = useRef<ScrollSmoother | null>(null);
@@ -51,8 +61,8 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     }, []);
 
     return (
-        <div ref={wrapperRef} id="smooth-wrapper">
-            <div ref={contentRef} id="smooth-content">
+        <div ref={wrapperRef} id="smooth-wrapper" className={wrapperClassName}>
+            <div ref={contentRef} id="smooth-content" className={contentClassName}>
                 {children}
             </div>
         </div>
