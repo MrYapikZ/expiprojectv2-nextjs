@@ -11,8 +11,6 @@ import {
     FormControl,
     FormField,
     FormItem,
-    FormLabel,
-    FormMessage,
 } from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
@@ -44,7 +42,7 @@ export function ContactForm({action, defaultValues}: Props) {
     } = form;
 
     const messageValue = watch("message") ?? "";
-    const messageMax = 5000; // mirrors your schema
+    const messageMax = 5000;
 
     async function submitHandler(data: ContactFormData) {
         try {
@@ -64,11 +62,11 @@ export function ContactForm({action, defaultValues}: Props) {
     return (
         <>
             <div className="absolute w-full h-full flex flex-col justify-center items-center">
-                <div className="w-2/5 h-3/5 p-8 border-2 rounded-md shadow-sm">
+                <div className="lg:w-2/5 w-5/6 h-auto p-8 border-2 rounded-md shadow-sm">
                     <Form {...form}>
                         <form
                             onSubmit={handleSubmit(submitHandler)}
-                            className="space-y-6"
+                            className="space-y-6 flex flex-col gap-8"
                             noValidate
                         >
                             <FormField
@@ -76,17 +74,16 @@ export function ContactForm({action, defaultValues}: Props) {
                                 name="name"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
-                                                placeholder="Your full name"
+                                                placeholder="your name*"
                                                 autoComplete="name"
                                                 required
                                                 aria-required="true"
+                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
-                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
@@ -96,19 +93,18 @@ export function ContactForm({action, defaultValues}: Props) {
                                 name="phone"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Phone</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
                                                 type="tel"
-                                                placeholder="+62 812-3456-7890"
+                                                placeholder="phone*"
                                                 autoComplete="tel"
                                                 inputMode="tel"
                                                 required
                                                 aria-required="true"
+                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
-                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
@@ -118,18 +114,17 @@ export function ContactForm({action, defaultValues}: Props) {
                                 name="email"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Email</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
                                                 type="email"
-                                                placeholder="you@example.com"
+                                                placeholder="your email*"
                                                 autoComplete="email"
                                                 required
                                                 aria-required="true"
+                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
-                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
@@ -139,7 +134,6 @@ export function ContactForm({action, defaultValues}: Props) {
                                 name="message"
                                 render={({field}) => (
                                     <FormItem>
-                                        <FormLabel>Message</FormLabel>
                                         <FormControl>
                                             <Textarea
                                                 {...field}
@@ -148,19 +142,19 @@ export function ContactForm({action, defaultValues}: Props) {
                                                 maxLength={messageMax}
                                                 required
                                                 aria-required="true"
+                                                className="uppercase border-0 border-b border-b-black aria-invalid:border-b-black max-h-32 !all-[unset] !appearance-none !outline-none !shadow-none !bg-transparent !p-0 !m-0 !text-inherit !w-auto !h-auto !min-w-0 !rounded-none !ring-0 !transition-none"
                                             />
                                         </FormControl>
                                         <div className="text-xs text-muted-foreground">
                                             {messageValue.length}/{messageMax}
                                         </div>
-                                        <FormMessage/>
                                     </FormItem>
                                 )}
                             />
 
                             <div className="pt-2">
                                 <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto">
-                                    {isSubmitting ? "Sending…" : "Send message"}
+                                    {isSubmitting ? "Sending…" : "Let’s collaborate"}
                                 </Button>
                             </div>
                         </form>
