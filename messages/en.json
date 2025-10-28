@@ -66,5 +66,22 @@
         "paragraph2": "ExpiProject will always evolve — because I’m always learning something new."
       }
     }
+  },
+  "ContactPage": {
+    "Hero": {
+      "title": "Error 404: You Haven’t Messaged Us Yet.",
+      "paragraph1": "Don’t let that error persist — fix it by saying hi",
+      "paragraph2": "We’re always debugging life and looking for cool humans to build with."
+    },
+    "Form": {
+      "name": "your name*",
+      "phone": "phone*",
+      "email": "your email*",
+      "message": "Tell us what you need help with…",
+      "submit": {
+        "label": "Let’s collaborate",
+        "loading": "Sending..."
+      }
+    }
   }
 }

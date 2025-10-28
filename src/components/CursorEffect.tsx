@@ -54,13 +54,29 @@ export default function CursorEffect() {
             dot.style.mixBlendMode = 'difference';
         }
 
+        const HOVER_SELECTOR = [
+            'button',
+            'a[href]',
+            'input:not([type="hidden"])',
+            'textarea',
+            'select',
+            '[role="button"]',
+            '[role="link"]',
+            '[role="textbox"]',
+            '[contenteditable]',
+            '[contenteditable="true"]',
+            '.cursor-hover',
+            '[data-slot="input"]',
+            '[data-slot="control"]',
+        ].join(',');
+
         const onOver = (e: Event) => {
             const target = e.target as HTMLElement;
-            if (target.closest('button, a, link, .cursor-hover')) onEnter();
+            if (target.closest(HOVER_SELECTOR)) onEnter();
         };
         const onOut = (e: Event) => {
             const target = e.target as HTMLElement;
-            if (target.closest('button, a, link, .cursor-hover')) onLeave();
+            if (target.closest(HOVER_SELECTOR)) onLeave();
         };
 
         document.addEventListener('mouseover', onOver);
