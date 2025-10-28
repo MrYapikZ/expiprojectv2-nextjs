@@ -16,6 +16,8 @@ import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
 import {toast} from "sonner";
 import {useTranslations} from "use-intl";
+import {gsap} from 'gsap';
+import {useLayoutEffect} from "react";
 
 type Props = {
     action?: (data: ContactFormData) => Promise<void> | void;
@@ -46,6 +48,31 @@ export function ContactForm({action, defaultValues}: Props) {
     const messageValue = watch("message") ?? "";
     const messageMax = 5000;
 
+    const rootRef = React.useRef<HTMLDivElement | null>(null);
+    const formRef = React.useRef<HTMLDivElement | null>(null);
+    const hasAnimatedRef = React.useRef(false);
+
+    useLayoutEffect(() => {
+        const form = formRef.current;
+        if (!rootRef.current || !form) return;
+
+        const delay = hasAnimatedRef.current ? 0 : 3.5;
+        hasAnimatedRef.current = true;
+
+        const ctx = gsap.context(() => {
+            gsap.set(form, {opacity: 1, yPercent: 100});
+            gsap.to(form, {
+                opacity: 1,
+                yPercent: 0,
+                duration: 1.4,
+                ease: 'back.out',
+                delay,
+            });
+        }, rootRef);
+
+        return () => ctx.revert();
+    }, []);
+
     async function submitHandler(data: ContactFormData) {
         try {
             if (action) {
@@ -63,8 +90,8 @@ export function ContactForm({action, defaultValues}: Props) {
 
     return (
         <>
-            <div className="absolute w-full h-full flex flex-col justify-center items-center">
-                <div className="lg:w-2/5 w-5/6 h-auto p-8 border-2 rounded-md shadow-sm">
+            <div ref={rootRef} className="absolute w-full h-full flex flex-col justify-center items-center">
+                <div ref={formRef} className="lg:w-2/5 w-5/6 h-auto p-8 border-2 rounded-md shadow-sm">
                     <Form {...form}>
                         <form
                             onSubmit={handleSubmit(submitHandler)}
