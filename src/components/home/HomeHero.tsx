@@ -6,14 +6,15 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-function HeroBackground() {
+let hasAnimatedOnce = false;
+
+function HomeHero() {
     const t = useTranslations();
 
     const rootRef = useRef<HTMLDivElement | null>(null);
     const copyrightRef = useRef<HTMLHeadingElement | null>(null);
     const fNameRef = useRef<HTMLHeadingElement | null>(null);
     const lNameRef = useRef<HTMLHeadingElement | null>(null);
-    const hasAnimatedRef = useRef(false);
 
     useLayoutEffect(() => {
         const copyright = copyrightRef.current;
@@ -21,8 +22,8 @@ function HeroBackground() {
         const lName = lNameRef.current;
         if (!copyright || !fName || !lName) return;
 
-        const delay = hasAnimatedRef.current ? 0 : 3.5;
-        hasAnimatedRef.current = true;
+        const delay = hasAnimatedOnce ? 0 : 3.5;
+        hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
@@ -88,4 +89,4 @@ function HeroBackground() {
     );
 }
 
-export default HeroBackground;
+export default HomeHero;
