@@ -64,21 +64,21 @@ function AppHeader() {
     const isHomePage = pathname === '/';
 
     return (
-        <div ref={rootRef} className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-between">
+        <header ref={rootRef} className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
             {/* Left Placeholder */}
             {isHomePage ? (
-                <div ref={leftNavRef} className="hidden md:block w-24 opacity-0"/>
+                <div ref={leftNavRef} className="hidden md:block w-64 opacity-0"/>
             ) : (
                 <NavigationMenu ref={leftNavRef} className="opacity-0">
                     <NavigationMenuList>
                         <NavigationMenuItem className="cursor-none">
-                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink asChild>
                                 {isMobile ? (
                                     <Link href="/" className="block md:hidden cursor-none">
                                         <ChevronLeft/>
                                     </Link>
                                 ) : (
-                                    <Link href="/" className="hidden md:block cursor-none">
+                                    <Link href="/" className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-6xl ">
                                         {t('App.name')}
                                     </Link>
                                 )}
@@ -93,39 +93,22 @@ function AppHeader() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/about" className="cursor-none">
-                                {t('Navigation.about')}
+                            <Link href="/about" className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.about')} ]
                             </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/contact" className="cursor-none">
-                                {t('Navigation.contact')}
+                            <Link href="/contact" className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.contact')} ]
                             </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuTrigger
-                            className="cursor-none">{t('Navigation.projects')}</NavigationMenuTrigger>
-                        <NavigationMenuContent className="cursor-none">
-                            <ul className="grid gap-2 w-56">
-                                <li>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="https://library.expiproject.com" className="cursor-none">
-                                            {t('Projects.library.title')}
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
-                                <li>
-                                    <NavigationMenuLink asChild>
-                                        <Link href="https://miyuki.expiproject.com" className="cursor-none">
-                                            {t('Projects.miyuki.title')}
-                                        </Link>
-                                    </NavigationMenuLink>
-                                </li>
-                            </ul>
-                        </NavigationMenuContent>
+                        <NavigationMenuLink className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            [ {t('Navigation.projects')} ]
+                        </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
@@ -134,18 +117,18 @@ function AppHeader() {
             <NavigationMenu ref={rightNavRef} className="opacity-0">
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className="cursor-none">
-                            {t('Navigation.signIn')}
+                        <NavigationMenuLink className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            [ {t('Navigation.signIn')} ]
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className="hidden md:block cursor-none">
-                            {t('Navigation.signUp')}
+                        <NavigationMenuLink className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            [ {t('Navigation.signUp')} ]
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
-        </div>
+        </header>
 
     );
 }
