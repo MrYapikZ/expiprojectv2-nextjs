@@ -2,17 +2,14 @@
 import React, {useLayoutEffect, useRef} from 'react';
 import {
     NavigationMenu,
-    NavigationMenuContent,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-    NavigationMenuTrigger,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
 import {useTranslations} from "use-intl";
 import {gsap} from "gsap";
-import {usePathname} from "@/i18n/navigation";
+import {Link, usePathname} from "@/i18n/navigation";
 import {ChevronLeft} from "lucide-react";
 import {useIsMobile} from "@/hooks/use-mobile";
 
@@ -64,7 +61,8 @@ function AppHeader() {
     const isHomePage = pathname === '/';
 
     return (
-        <header ref={rootRef} className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
+        <header ref={rootRef}
+                className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
             {/* Left Placeholder */}
             {isHomePage ? (
                 <div ref={leftNavRef} className="hidden md:block w-64 opacity-0"/>
@@ -78,7 +76,8 @@ function AppHeader() {
                                         <ChevronLeft/>
                                     </Link>
                                 ) : (
-                                    <Link href="/" className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-6xl ">
+                                    <Link href="/"
+                                          className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-6xl ">
                                         {t('App.name')}
                                     </Link>
                                 )}
@@ -93,21 +92,26 @@ function AppHeader() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/about" className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            <Link href="/about"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
                                 [ {t('Navigation.about')} ]
                             </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/contact" className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            <Link href="/contact"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
                                 [ {t('Navigation.contact')} ]
                             </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
-                            [ {t('Navigation.projects')} ]
+                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <Link href="/projects"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.projects')} ]
+                            </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
@@ -117,12 +121,14 @@ function AppHeader() {
             <NavigationMenu ref={rightNavRef} className="opacity-0">
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                        <NavigationMenuLink
+                            className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
                             [ {t('Navigation.signIn')} ]
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                        <NavigationMenuLink
+                            className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
                             [ {t('Navigation.signUp')} ]
                         </NavigationMenuLink>
                     </NavigationMenuItem>
