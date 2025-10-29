@@ -7,6 +7,8 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
+let hasAnimatedOnce = false;
+
 function ContactHero() {
     const t = useTranslations();
 
@@ -14,7 +16,6 @@ function ContactHero() {
     const titleRef = useRef<HTMLHeadingElement | null>(null);
     const paragraph1Ref = useRef<HTMLParagraphElement | null>(null);
     const paragraph2Ref = useRef<HTMLParagraphElement | null>(null);
-    const hasAnimatedRef = useRef(false);
 
     useLayoutEffect(() => {
         const root = rootRef.current;
@@ -23,13 +24,21 @@ function ContactHero() {
         const paragraph2 = paragraph2Ref.current;
         if (!root || !title || !paragraph1 || !paragraph2) return;
 
-        const delay = hasAnimatedRef.current ? 0 : 3.5;
-        hasAnimatedRef.current = true;
+        const delay = hasAnimatedOnce ? 0 : 3.5;
+        hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             const titleSplit = new SplitText(title, {type: 'lines,chars', linesClass: 'split-line'});
-            const para1Split = new SplitText(paragraph1, {type: 'lines,chars', linesClass: 'split-line', mask: 'lines'});
-            const para2Split = new SplitText(paragraph2, {type: 'lines,chars', linesClass: 'split-line', mask: 'lines'});
+            const para1Split = new SplitText(paragraph1, {
+                type: 'lines,chars',
+                linesClass: 'split-line',
+                mask: 'lines'
+            });
+            const para2Split = new SplitText(paragraph2, {
+                type: 'lines,chars',
+                linesClass: 'split-line',
+                mask: 'lines'
+            });
 
             gsap.set(titleSplit.lines, {display: 'block', overflow: 'hidden'});
             gsap.set(titleSplit.chars, {opacity: 1, yPercent: 100});

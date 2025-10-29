@@ -7,13 +7,14 @@ import {SplitText} from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
+let hasAnimatedOnce = false;
+
 function AboutContent() {
     const t = useTranslations();
     const rootRef = useRef<HTMLDivElement | null>(null);
     const aboutTitleRef = useRef<HTMLHeadingElement | null>(null);
     const aboutContentRef1 = useRef<HTMLParagraphElement | null>(null);
     const aboutContentRef2 = useRef<HTMLParagraphElement | null>(null);
-    const hasAnimatedRef = useRef(false);
 
     useLayoutEffect(() => {
         const root = rootRef.current;
@@ -41,9 +42,9 @@ function AboutContent() {
             document.body.style.touchAction = '';
         };
 
-        const firstTime = !hasAnimatedRef.current;
-        const delay = hasAnimatedRef.current ? 0 : 4;
-        hasAnimatedRef.current = true;
+        const firstTime = !hasAnimatedOnce;
+        const delay = hasAnimatedOnce ? 0 : 4;
+        hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
