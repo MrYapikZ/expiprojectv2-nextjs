@@ -19,6 +19,7 @@
     "signOut": "Sign Out"
   },
   "Projects": {
+    "title": "OUR PROJECTS",
     "Project1": {
       "name": "ExpiLibrary",
       "link": "https://library.expiproject.com",
