@@ -7,13 +7,14 @@ import {SplitText} from "gsap/SplitText";
 
 gsap.registerPlugin(ScrollTrigger);
 
+let hasAnimatedOnce = false;
+
 function AboutContent() {
     const t = useTranslations();
     const rootRef = useRef<HTMLDivElement | null>(null);
     const aboutTitleRef = useRef<HTMLHeadingElement | null>(null);
     const aboutContentRef1 = useRef<HTMLParagraphElement | null>(null);
     const aboutContentRef2 = useRef<HTMLParagraphElement | null>(null);
-    const hasAnimatedRef = useRef(false);
 
     useLayoutEffect(() => {
         const root = rootRef.current;
@@ -22,32 +23,11 @@ function AboutContent() {
         const aboutContent2 = aboutContentRef2.current;
         if (!root || !aboutTitle || !aboutContent1 || !aboutContent2) return;
 
-        const lockScroll = () => {
-            document.body.style.position = 'fixed';
-            document.body.style.top = '0';
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
-            document.body.style.overflow = 'hidden';
-            document.body.style.touchAction = 'none';
-        };
-        const unlockScroll = () => {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.left = '';
-            document.body.style.right = '';
-            document.body.style.width = '';
-            document.body.style.overflow = '';
-            document.body.style.touchAction = '';
-        };
-
-        const firstTime = !hasAnimatedRef.current;
-        const delay = hasAnimatedRef.current ? 0 : 4;
-        hasAnimatedRef.current = true;
+        const delay = hasAnimatedOnce ? 0 : 4;
+        hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
-            if (firstTime) lockScroll();
             gsap.set(root, {opacity: 0, y: 256});
             const splitTitle = SplitText.create(aboutTitle!, {
                 type: 'lines, words',
@@ -92,7 +72,6 @@ function AboutContent() {
                 stagger: {each: 0.2, from: 'start'}
             }, "-=1").add(() => {
                 ScrollTrigger.refresh();
-                if (firstTime) unlockScroll();
             }).play();
 
             const sections = gsap.utils.toArray<HTMLElement>('section');
@@ -135,7 +114,6 @@ function AboutContent() {
         }, rootRef);
 
         return () => {
-            unlockScroll();
             ctx.revert();
         };
     }, []);

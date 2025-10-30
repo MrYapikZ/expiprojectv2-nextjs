@@ -1,8 +1,8 @@
 import React from 'react';
-import HeroBackground from "@/components/home/HeroBackground";
+import HomeHero from "@/components/home/HomeHero";
 
 export default function HomePage() {
     return <>
-        <HeroBackground/>
+        <HomeHero/>
     </>;
 }

@@ -1,22 +1,22 @@
 'use client';
 import React, {useLayoutEffect, useRef} from 'react';
 import {
-    Menubar,
-    MenubarContent,
-    MenubarItem,
-    // MenubarLabel,
-    MenubarMenu,
-    MenubarTrigger
-} from "@/components/ui/menubar";
-import Link from "next/link";
+    NavigationMenu,
+    NavigationMenuItem,
+    NavigationMenuLink,
+    NavigationMenuList,
+    navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 import {useTranslations} from "use-intl";
 import {gsap} from "gsap";
-import {usePathname} from "@/i18n/navigation";
+import {Link, usePathname} from "@/i18n/navigation";
 import {ChevronLeft} from "lucide-react";
+import {useIsMobile} from "@/hooks/use-mobile";
 
 function AppHeader() {
     const t = useTranslations()
     const pathname = usePathname();
+    const isMobile = useIsMobile()
 
     const rootRef = useRef<HTMLDivElement | null>(null);
     const leftNavRef = useRef<HTMLDivElement | null>(null);
@@ -61,68 +61,80 @@ function AppHeader() {
     const isHomePage = pathname === '/';
 
     return (
-        <div ref={rootRef} className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-between">
+        <header ref={rootRef}
+                className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
             {/* Left Placeholder */}
             {isHomePage ? (
-                <div ref={leftNavRef} className="hidden md:block w-24 opacity-0"/>
+                <div ref={leftNavRef} className="hidden md:block w-64 opacity-0"/>
             ) : (
-                <Menubar ref={leftNavRef} className="opacity-0">
-                    <MenubarMenu>
-                        <MenubarTrigger className="cursor-none">
-                            <Link href="/" className="hidden md:block cursor-none">
-                                {t('App.name')}
-                            </Link>
-                            <Link href="/" className="block md:hidden cursor-none">
-                                <ChevronLeft/>
-                            </Link>
-                        </MenubarTrigger>
-                    </MenubarMenu>
-                </Menubar>
+                <NavigationMenu ref={leftNavRef} className="opacity-0">
+                    <NavigationMenuList>
+                        <NavigationMenuItem className="cursor-none">
+                            <NavigationMenuLink asChild>
+                                {isMobile ? (
+                                    <Link href="/" className="block md:hidden cursor-none">
+                                        <ChevronLeft/>
+                                    </Link>
+                                ) : (
+                                    <Link href="/"
+                                          className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-6xl ">
+                                        {t('App.name')}
+                                    </Link>
+                                )}
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                    </NavigationMenuList>
+                </NavigationMenu>
             )}
 
             {/* Center Menubar */}
-            <Menubar ref={centerNavRef} className="opacity-0">
-                <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">
-                        <Link href="/about" className="cursor-none">
-                            {t('Navigation.about')}
-                        </Link>
-                    </MenubarTrigger>
-                </MenubarMenu>
-                <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">
-                        <Link href="/contact" className="cursor-none">
-                            {t('Navigation.contact')}
-                        </Link>
-                    </MenubarTrigger>
-                </MenubarMenu>
-                <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">{t('Navigation.projects')}</MenubarTrigger>
-                    <MenubarContent className="cursor-none">
-                        <MenubarItem asChild>
-                            <Link href="https://library.expiproject.com" className="cursor-none">
-                                {t('Projects.library.title')}
+            <NavigationMenu ref={centerNavRef} viewport={true} className="opacity-0">
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <Link href="/about"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.about')} ]
                             </Link>
-                        </MenubarItem>
-                        <MenubarItem asChild>
-                            <Link href="https://miyuki.expiproject.com" className="cursor-none">
-                                {t('Projects.miyuki.title')}
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <Link href="/contact"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.contact')} ]
                             </Link>
-                        </MenubarItem>
-                    </MenubarContent>
-                </MenubarMenu>
-            </Menubar>
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                            <Link href="/projects"
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                [ {t('Navigation.projects')} ]
+                            </Link>
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
 
             {/* Right Menubar */}
-            <Menubar ref={rightNavRef} className="opacity-0">
-                <MenubarMenu>
-                    <MenubarTrigger className="cursor-none">{t('Navigation.signIn')}</MenubarTrigger>
-                </MenubarMenu>
-                <MenubarMenu>
-                    <MenubarTrigger className="hidden md:block cursor-none">{t('Navigation.signUp')}</MenubarTrigger>
-                </MenubarMenu>
-            </Menubar>
-        </div>
+            <NavigationMenu ref={rightNavRef} className="opacity-0">
+                <NavigationMenuList>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink
+                            className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            [ {t('Navigation.signIn')} ]
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink
+                            className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                            [ {t('Navigation.signUp')} ]
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
+        </header>
 
     );
 }

@@ -19,6 +19,8 @@ import {useTranslations} from "use-intl";
 import {gsap} from 'gsap';
 import {useLayoutEffect} from "react";
 
+let hasAnimatedOnce = false;
+
 type Props = {
     action?: (data: ContactFormData) => Promise<void> | void;
     defaultValues?: Partial<ContactFormData>;
@@ -50,14 +52,13 @@ export function ContactForm({action, defaultValues}: Props) {
 
     const rootRef = React.useRef<HTMLDivElement | null>(null);
     const formRef = React.useRef<HTMLDivElement | null>(null);
-    const hasAnimatedRef = React.useRef(false);
 
     useLayoutEffect(() => {
         const form = formRef.current;
         if (!rootRef.current || !form) return;
 
-        const delay = hasAnimatedRef.current ? 0 : 3.5;
-        hasAnimatedRef.current = true;
+        const delay = hasAnimatedOnce ? 0 : 3.5;
+        hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             gsap.set(form, {opacity: 1, yPercent: 100});
