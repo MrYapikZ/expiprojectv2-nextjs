@@ -4,6 +4,7 @@ import {useTranslations} from 'use-intl';
 import {gsap} from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import {SplitText} from "gsap/SplitText";
+import {lockBodyScroll, unlockBodyScroll} from "@/lib/scroll-lock";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,32 +24,13 @@ function AboutContent() {
         const aboutContent2 = aboutContentRef2.current;
         if (!root || !aboutTitle || !aboutContent1 || !aboutContent2) return;
 
-        const lockScroll = () => {
-            document.body.style.position = 'fixed';
-            document.body.style.top = '0';
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
-            document.body.style.overflow = 'hidden';
-            document.body.style.touchAction = 'none';
-        };
-        const unlockScroll = () => {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.left = '';
-            document.body.style.right = '';
-            document.body.style.width = '';
-            document.body.style.overflow = '';
-            document.body.style.touchAction = '';
-        };
-
         const firstTime = !hasAnimatedOnce;
         const delay = hasAnimatedOnce ? 0 : 4;
         hasAnimatedOnce = true;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
-            if (firstTime) lockScroll();
+            if (firstTime) lockBodyScroll();
             gsap.set(root, {opacity: 0, y: 256});
             const splitTitle = SplitText.create(aboutTitle!, {
                 type: 'lines, words',
@@ -93,7 +75,7 @@ function AboutContent() {
                 stagger: {each: 0.2, from: 'start'}
             }, "-=1").add(() => {
                 ScrollTrigger.refresh();
-                if (firstTime) unlockScroll();
+                if (firstTime) unlockBodyScroll();
             }).play();
 
             const sections = gsap.utils.toArray<HTMLElement>('section');
@@ -136,7 +118,7 @@ function AboutContent() {
         }, rootRef);
 
         return () => {
-            unlockScroll();
+            unlockBodyScroll();
             ctx.revert();
         };
     }, []);
