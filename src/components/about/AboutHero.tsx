@@ -6,8 +6,6 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-let hasAnimatedOnce = false;
-
 function AboutHero() {
     const t = useTranslations();
     const rootRef = useRef<HTMLDivElement | null>(null);
@@ -16,8 +14,7 @@ function AboutHero() {
     useLayoutEffect(() => {
         if (!titleRef.current) return;
 
-        const delay = hasAnimatedOnce ? 0 : 3.5;
-        hasAnimatedOnce = true;
+        const delay = 2.5;
 
         const ctx = gsap.context(() => {
             const split = new SplitText(titleRef.current!, {

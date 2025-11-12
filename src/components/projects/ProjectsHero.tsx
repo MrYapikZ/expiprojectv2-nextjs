@@ -6,8 +6,6 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-let hasAnimatedOnce = false;
-
 function ProjectsHero() {
     const t = useTranslations();
 
@@ -19,8 +17,7 @@ function ProjectsHero() {
         const title = titleRef.current;
         if (!root || !title) return;
 
-        const delay = hasAnimatedOnce ? 0 : 3.5;
-        hasAnimatedOnce = true;
+        const delay = 2.5;
 
         const ctx = gsap.context(() => {
             const titleSplit = new SplitText(title, {type: 'lines,chars', linesClass: 'split-line', mask: 'lines'});
