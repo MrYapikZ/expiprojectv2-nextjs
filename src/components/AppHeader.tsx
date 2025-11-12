@@ -12,6 +12,7 @@ import {gsap} from "gsap";
 import {Link, usePathname} from "@/i18n/navigation";
 import {ChevronLeft, LogInIcon} from "lucide-react";
 import {useIsMobile} from "@/hooks/use-mobile";
+import AnimatedLink from "@/components/AnimatedLink";
 
 function AppHeader() {
     const t = useTranslations()
@@ -62,7 +63,7 @@ function AppHeader() {
 
     return (
         <header ref={rootRef}
-                className="fixed top-0 left-0 w-full z-50 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
+                className="fixed top-0 left-0 w-full z-40 p-4 flex flex-row items-center justify-evenly mix-blend-difference">
             {/* Left Placeholder */}
             {isHomePage ? (
                 <div ref={leftNavRef} className="hidden md:block w-64 opacity-0"/>
@@ -72,14 +73,14 @@ function AppHeader() {
                         <NavigationMenuItem className="cursor-none">
                             <NavigationMenuLink asChild>
                                 {isMobile ? (
-                                    <Link href="/" className="block md:hidden cursor-none">
+                                    <AnimatedLink href="/" className="block md:hidden cursor-none">
                                         <ChevronLeft/>
-                                    </Link>
+                                    </AnimatedLink>
                                 ) : (
-                                    <Link href="/"
+                                    <AnimatedLink href="/"
                                           className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-6xl ">
                                         {t('App.name')}
-                                    </Link>
+                                    </AnimatedLink>
                                 )}
                             </NavigationMenuLink>
                         </NavigationMenuItem>
@@ -92,26 +93,26 @@ function AppHeader() {
                 <NavigationMenuList>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/about"
+                            <AnimatedLink href="/about"
                                   className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.about')} ]
-                            </Link>
+                            </AnimatedLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/contact"
+                            <AnimatedLink href="/contact"
                                   className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.contact')} ]
-                            </Link>
+                            </AnimatedLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="/projects"
+                            <AnimatedLink href="/projects"
                                   className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.projects')} ]
-                            </Link>
+                            </AnimatedLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
@@ -123,13 +124,13 @@ function AppHeader() {
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild>
                             {isMobile ? (
-                                <Link href="#" className="block md:hidden cursor-none">
+                                <AnimatedLink href="#" className="block md:hidden cursor-none">
                                     <LogInIcon/>
-                                </Link>) : (
-                                <Link href="#"
+                                </AnimatedLink>) : (
+                                <AnimatedLink href="#"
                                       className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                     [ {t('Navigation.signIn')} ]
-                                </Link>
+                                </AnimatedLink>
                             )}
 
                         </NavigationMenuLink
@@ -137,10 +138,10 @@ function AppHeader() {
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild>
-                            <Link href="#"
+                            <AnimatedLink href="#"
                                   className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.signUp')} ]
-                            </Link>
+                            </AnimatedLink>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
