@@ -10,7 +10,7 @@ import {
 import {useTranslations} from "use-intl";
 import {gsap} from "gsap";
 import {Link, usePathname} from "@/i18n/navigation";
-import {ChevronLeft} from "lucide-react";
+import {ChevronLeft, LogInIcon} from "lucide-react";
 import {useIsMobile} from "@/hooks/use-mobile";
 
 function AppHeader() {
@@ -93,7 +93,7 @@ function AppHeader() {
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                             <Link href="/about"
-                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.about')} ]
                             </Link>
                         </NavigationMenuLink>
@@ -101,7 +101,7 @@ function AppHeader() {
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                             <Link href="/contact"
-                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.contact')} ]
                             </Link>
                         </NavigationMenuLink>
@@ -109,7 +109,7 @@ function AppHeader() {
                     <NavigationMenuItem>
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                             <Link href="/projects"
-                                  className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
+                                  className="cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
                                 [ {t('Navigation.projects')} ]
                             </Link>
                         </NavigationMenuLink>
@@ -121,15 +121,26 @@ function AppHeader() {
             <NavigationMenu ref={rightNavRef} className="opacity-0">
                 <NavigationMenuList>
                     <NavigationMenuItem>
-                        <NavigationMenuLink
-                            className="cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
-                            [ {t('Navigation.signIn')} ]
-                        </NavigationMenuLink>
+                        <NavigationMenuLink asChild>
+                            {isMobile ? (
+                                <Link href="#" className="block md:hidden cursor-none">
+                                    <LogInIcon/>
+                                </Link>) : (
+                                <Link href="#"
+                                      className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
+                                    [ {t('Navigation.signIn')} ]
+                                </Link>
+                            )}
+
+                        </NavigationMenuLink
+                        >
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink
-                            className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent !text-2xl">
-                            [ {t('Navigation.signUp')} ]
+                        <NavigationMenuLink asChild>
+                            <Link href="#"
+                                  className="hidden md:block cursor-none font-bebas-neue !text-white !bg-transparent lg:text-2xl md:text-xl text-lg">
+                                [ {t('Navigation.signUp')} ]
+                            </Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </NavigationMenuList>
