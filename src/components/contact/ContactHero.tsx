@@ -7,8 +7,6 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-let hasAnimatedOnce = false;
-
 function ContactHero() {
     const t = useTranslations();
 
@@ -24,8 +22,7 @@ function ContactHero() {
         const paragraph2 = paragraph2Ref.current;
         if (!root || !title || !paragraph1 || !paragraph2) return;
 
-        const delay = hasAnimatedOnce ? 0 : 3.5;
-        hasAnimatedOnce = true;
+        const delay = 2.5;
 
         const ctx = gsap.context(() => {
             const titleSplit = new SplitText(title, {type: 'lines,chars', linesClass: 'split-line'});

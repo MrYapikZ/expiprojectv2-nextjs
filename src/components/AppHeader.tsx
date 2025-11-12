@@ -23,7 +23,6 @@ function AppHeader() {
     const leftNavRef = useRef<HTMLDivElement | null>(null);
     const centerNavRef = useRef<HTMLDivElement | null>(null);
     const rightNavRef = useRef<HTMLDivElement | null>(null);
-    const hasAnimatedRef = useRef(false);
     const tlRef = useRef<gsap.core.Timeline | null>(null);
 
     useLayoutEffect(() => {
@@ -40,8 +39,7 @@ function AppHeader() {
         );
         if (nodes.length === 0) return;
 
-        const delay = hasAnimatedRef.current ? 0 : 4;
-        hasAnimatedRef.current = true;
+        const delay = 4;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();

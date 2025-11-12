@@ -24,8 +24,8 @@ const AppTransition = forwardRef<AppTransitionHandle>((_, ref) => {
 
         // Build timeline
         const tl = gsap.timeline({ paused: true });
-        tl.to(circle, { opacity: 1, scale: 1, duration: 2, rotate: 180, ease: 'power3.out' }, 0)
-            .to(background, { opacity: 1, duration: 2, ease: 'power3.out' }, 0);
+        tl.to(circle, { opacity: 1, scale: 1, duration: 3, rotate: 180, ease: 'power3.out' }, 0)
+            .to(background, { opacity: 1, duration: 3, ease: 'power3.out' }, 0);
 
         tlRef.current = tl;
 

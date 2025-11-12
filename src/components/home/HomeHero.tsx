@@ -6,8 +6,6 @@ import {SplitText} from 'gsap/SplitText';
 
 gsap.registerPlugin(SplitText);
 
-let hasAnimatedOnce = false;
-
 function HomeHero() {
     const t = useTranslations();
 
@@ -22,8 +20,7 @@ function HomeHero() {
         const lName = lNameRef.current;
         if (!copyright || !fName || !lName) return;
 
-        const delay = hasAnimatedOnce ? 0 : 3.5;
-        hasAnimatedOnce = true;
+        const delay = 2.5;
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
