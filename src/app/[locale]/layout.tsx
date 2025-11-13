@@ -12,6 +12,7 @@ import {SpeedInsights} from "@vercel/speed-insights/next";
 import {Metadata} from "next";
 import SmoothScroll from "@/components/SmoothScroll";
 import {TransitionProvider} from "@/components/TransitionProvider";
+import AppFooter from "@/components/AppFooter";
 
 type Props = {
     children: React.ReactNode;
@@ -93,7 +94,10 @@ export default async function LocaleLayout({children, params}: Props) {
                 <TransitionProvider>
                     <AppHeader/>
                     <SmoothScroll>
-                        {children}
+                        <main className="flex-1 min-h-screen relative">
+                            {children}
+                        </main>
+                        <AppFooter/>
                     </SmoothScroll>
                     <CursorEffect/>
                 </TransitionProvider>

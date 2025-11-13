@@ -18,6 +18,27 @@
     "signUp": "Sign Up",
     "signOut": "Sign Out"
   },
+  "Footer": {
+    "rights": "All rights reserved.",
+    "socials": {
+      "discord": {
+        "label": "Discord",
+        "link": "https://discord.gg/buCST8Y5SZ"
+      },
+      "github": {
+        "label": "GitHub",
+        "link": "https://github.com/ExpiProject"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "link": "https://www.linkedin.com/company/expiproject"
+      },
+      "instagram": {
+        "label": "Instagram",
+        "link": "https://www.instagram.com/expiproject"
+      }
+    }
+  },
   "Projects": {
     "title": "OUR PROJECTS",
     "Project1": {
