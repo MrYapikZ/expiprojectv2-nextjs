@@ -39,7 +39,7 @@ function ProjectsHero() {
 
     return (
         <>
-            <div ref={rootRef} className="relative w-full h-screen">
+            <div ref={rootRef} className="relative w-full h-dvh">
                 <div className="w-full h-full flex justify-center items-end">
                     <h1 ref={titleRef} className="text-[clamp(6rem,20vw,55rem)] font-bebas-neue leading-none">
                         {t('Projects.title')}

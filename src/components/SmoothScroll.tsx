@@ -15,7 +15,7 @@ type Props = {
 
 export default function SmoothScroll({
                                          children,
-                                         contentClassName = 'min-h-screen w-full',
+                                         contentClassName = 'min-h-full w-full',
                                          wrapperClassName,
                                      }: Props) {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
