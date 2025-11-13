@@ -27,14 +27,20 @@ function ProjectsContent() {
 
                 const originalSplit = new SplitText(original, {type: 'chars'});
                 const cloneSplit = new SplitText(clone, {type: 'chars'});
+                const computedStyle = window.getComputedStyle(original);
+                const fontSize = parseFloat(computedStyle.fontSize);
+                const depthValue = -fontSize * 0.5;
 
-                gsap.set([originalSplit.chars, cloneSplit.chars], {yPercent: 0});
+                gsap.set([originalSplit.chars, cloneSplit.chars], {
+                    yPercent: 0,
+                    transformStyle: 'preserve-3d'
+                });
                 gsap.set(cloneSplit.chars, {rotationX: -90});
 
                 const tl = gsap.timeline({paused: true});
                 tl.to(originalSplit.chars, {
                     rotationX: 90,
-                    transformOrigin: "50% 50% -50px",
+                    transformOrigin: `50% 50% ${depthValue}px`,
                     stagger: 0.05,
                     ease: 'power3.out',
                 });
@@ -43,7 +49,7 @@ function ProjectsContent() {
                     {
                         yPercent: -100,
                         rotationX: 0,
-                        transformOrigin: "50% 50% -50px",
+                        transformOrigin: `50% 50% ${depthValue}px`,
                         stagger: 0.05,
                         ease: 'power3.out',
                     },
@@ -80,11 +86,11 @@ function ProjectsContent() {
     }, []);
 
     return (
-        <div ref={containerRef} className="w-full h-full px-32 py-16">
+        <div ref={containerRef} className="w-full h-full md:px-32 px-8 py-16">
             <div className="border-t"/>
-            <div className="flex flex-col justify-start gap-32 py-20">
+            <div className="flex flex-col justify-start md:gap-32 gap-16 py-20">
                 <div className="p-2">
-                    <h2 className="flex flex-col text-8xl font-bebas-neue leading-0.5 perspective-[600px]">
+                    <h2 className="flex flex-col md:text-8xl text-6xl font-bebas-neue leading-0.5 perspective-[600px]">
                         <p
                             data-split-original
                             className="opacity-50"
@@ -104,7 +110,7 @@ function ProjectsContent() {
                 </div>
 
                 <div className="p-2">
-                    <h2 className="flex flex-col text-8xl font-bebas-neue leading-0.5 perspective-[600px]">
+                    <h2 className="flex flex-col md:text-8xl text-6xl font-bebas-neue leading-0.5 perspective-[600px]">
                         <p
                             data-split-original
                             className="opacity-50"
